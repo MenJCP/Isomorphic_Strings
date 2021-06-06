@@ -1,39 +1,50 @@
 fun main() {
-    print("Insertar el tamaño de la primera palabra: ")
+    print("Diga el tamaño de la primera palabra: ")
+    var s1= Integer.valueOf(readLine())
+    var list1:MutableList<Char> = mutableListOf()
+    var w1: List<Char> = list1
     var i=0
-    var size1= Integer.valueOf(readLine())
-    var array1: CharArray = CharArray(size1)
+    var r=0
 
-    while(i < size1){
-        println("Ingrese la letra #$i de la primera palabra")
-        array1[i]= readLine()!!.first()
+    while(i < s1){
+        println("Escriba la letra #$i de la primera palabra: ")
+        list1.add(readLine()!!.first())
         i++
     }
-    for(o in array1){
+    for(o in list1){
+        print("")
         println(o)
     }
+    print("Diga el tamaño de la segunda palabra: ")
+    var s2= Integer.valueOf(readLine())
+    var list2:MutableList<Char> = mutableListOf()
+    var w2: List<Char> = list2
 
-    print("Insertar el tamaño de la segunda palabra: ")
-    var x=0
-    var size2= Integer.valueOf(readLine())
-    var array2: CharArray = CharArray(size2)
 
-    while(x < size2){
-        println("Ingrese la letra #$x de la primera palabra")
-        array2[x]= readLine()!!.first()
-        x++
+    while(r < s1){
+        println("Escriba la letra #$r de la primera palabra: ")
+        list2.add(readLine()!!.first())
+        r++
     }
-    for(u in array1){
+    for(u in list2){
+        print("")
         println(u)
     }
-    var z=0
-    var array3: CharArray = CharArray(size1)
-    var array4: CharArray = CharArray(size2)
 
-    while(z < size1){
-        if(array3[z] != array4[z]){
-            println("No son isomorfas")
-        } else{ println("Son isomorfas")}
-        z++
+    if(s1 != s2){
+        println("No son isomorfas porque no poseen el mismo tamaño")
     }
+
+    if(list1.contains(w1)){
+      if(w1 != w2){
+          println("No son isomorfas")
+      } else{
+          if(list2.contains(w2)){
+              println("No son isomorfas")
+              w1=w2
+          }
+
+      }
+    }
+    return println("Son isomorfas")
 }
