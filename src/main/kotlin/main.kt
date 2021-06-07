@@ -1,50 +1,40 @@
+import java.util.HashMap
+
 fun main() {
-    print("Diga el tamaño de la primera palabra: ")
-    var s1= Integer.valueOf(readLine())
-    var list1:MutableList<Char> = mutableListOf()
-    var w1: List<Char> = list1
-    var i=0
-    var r=0
+    println("Inserte la primera palabra")
+    var p1= readLine()
 
-    while(i < s1){
-        println("Escriba la letra #$i de la primera palabra: ")
-        list1.add(readLine()!!.first())
-        i++
-    }
-    for(o in list1){
-        print("")
-        println(o)
-    }
-    print("Diga el tamaño de la segunda palabra: ")
-    var s2= Integer.valueOf(readLine())
-    var list2:MutableList<Char> = mutableListOf()
-    var w2: List<Char> = list2
+    println("Inserte la primera palabra")
+    var p2= readLine()
 
-
-    while(r < s1){
-        println("Escriba la letra #$r de la primera palabra: ")
-        list2.add(readLine()!!.first())
-        r++
-    }
-    for(u in list2){
-        print("")
-        println(u)
+    if(p1 == null && p2 == null){
+        return println("Debe agregar las palabras para poder identificar si son isomorfas")
     }
 
-    if(s1 != s2){
-        println("No son isomorfas porque no poseen el mismo tamaño")
+    if(p1?.length != p2?.length){
+        return println("No son isomorfas porque no tienen el mismo tamaño")
     }
 
-    if(list1.contains(w1)){
-      if(w1 != w2){
-          println("No son isomorfas")
-      } else{
-          if(list2.contains(w2)){
-              println("No son isomorfas")
-              w1=w2
+    var map= HashMap<Char,Char>()
+
+    for(o in 0 until p1!!.length){
+      val w1= p1[o]
+      val w2= p2!![o]
+
+      if(map.containsKey(w1)) {
+
+          if (map[w1] != w2) {
+              return println("No son isomorfas")
+
+          } else {
+              if (map.containsValue(w2)) {
+                  return println("No son isomorfas")
+                  map[w1] = w2
+
+              }
           }
 
       }
     }
-    return println("Son isomorfas")
+        return println("Son isomorfas")
 }
